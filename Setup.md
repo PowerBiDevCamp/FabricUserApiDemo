@@ -59,9 +59,10 @@ debugging and testing purposes. Resist the temptation to create the URL
 with the **https** protocol instead of with **http** because it will not
 work. The http protocol is the only one that will work.
 
-Click **Register** to create the new application.
+Move down and click the **Register** buttom to create the new application.
 
-<img src="./images/Setup/media/image5.png"  style="width:75%" />
+<img src="./images/Setup/media/image5.png"  style="width:55%" />
+
 Now that you have created the application, you need to record
 Application ID for use later in the C# console application. Copy
 the **Application ID** from the application summary page.
