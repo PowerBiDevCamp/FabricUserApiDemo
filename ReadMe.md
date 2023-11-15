@@ -8,17 +8,15 @@ application demonstrating how to create Fabric workspaces and Fabric
 workspace items included semantic models, reports, lakehouses and
 notebooks.
 
-<img src="./images/ReadMe/media/image1.png"
-style="width:2.75168in;height:2.79821in"
-alt="A screenshot of a computer Description automatically generated" />
+<img src="./images/ReadMe/media/image1.png" style="width:70%" />
 
-> Have you heard that datasets are no longer called datasets. They’ve been
-renamed to semantic models.
+> Have you heard that **datasets** are no longer called **datasets**. They’ve been
+renamed to **semantic models**.
 
 ## Next steps
- - If you are interest in getting this developer sample up and running,
+ - If you're interested in getting this developer sample up application and running,
 follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page.
 
- - If you are interested in learning the fundamentals of the Fabric
-User APIs, you should read [Getting Started with the Fabric User
+ - If you're interested in learning the fundamentals of the Fabric
+User APIs and how to get started with the programming model, you should read [Getting Started with the Fabric User
 API](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md).
