@@ -124,7 +124,7 @@ from the address bar as shown in the following screenshot.
 
 <img src="./images/Setup/media/image11.png"  style="width:75%" />
 
-Once you have determined the Id of the Fabric-enabled capacity you will
+Once you have determined the capacity Id of the Fabric-enabled capacity you will
 use for testing, return to the project file named **AppSettings.cs** in
 Visual Studio and update the const named **PremiumCapacityId**. Save
 your changes to **AppSettings.cs**.
