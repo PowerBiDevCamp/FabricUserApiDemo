@@ -92,11 +92,11 @@ click on **FabricUserApi.sln** to open the project in Visual Studio
 
 <img src="./images/Setup/media/image7.png"   style="width:65%" />
 
-Once the **FabricUserApiDemo** project opens in Visual Studio, you
+> Once the **FabricUserApiDemo** project opens in Visual Studio, you
 should be able to see the top-level files and folders in the Solution
-Explorer as shown in the following screenshot. Your next step is to open
-the **AppSettings.cs** so you can update configuration
-values inside.
+Explorer.
+
+Open the **AppSettings.cs** so you can update configuration values inside.
 
 <img src="./images/Setup/media/image8.png"   style="width:30%" />
 
