@@ -15,8 +15,7 @@ renamed to **semantic models**.
 
 ## Next steps
  - Follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page to get this developer sample up and running
- - Read the [Microsoft Fabric REST API documentation](https://learn.microsoft.com/rest/api/fabric/articles/) to learn the fundementals
+ - Read the [Microsoft Fabric REST API documentation](https://learn.microsoft.com/rest/api/fabric/articles/){:target="_blank"} to learn the fundementals
  - Read [Getting Started with the Fabric User
-APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md) to build your understanding of the code in this developer sample
- - Read the <a href="https://learn.microsoft.com/rest/api/fabric/articles" target="_blank">Microsoft Fabric REST API documentation</a> to learn the fundementals
-
+APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md){:target="_blank"} to build your understanding of the code in this developer sample
+ 
