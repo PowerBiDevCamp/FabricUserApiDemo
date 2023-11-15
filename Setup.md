@@ -1,8 +1,8 @@
 ## Setting Up the FabricUserApiDemo Application
 This document is provided to assist you with getting the
 **FabricUserApiDemo** project up and running so you can begin your
-testing with the Fabric User APIs. To set up this project for testing,
-you will need a local installation of either Visual Studio 2022 or
+testing with the Fabric User APIs. You will need a Fabric environment in which you are able to create new workspaces. To set up this project for testing,
+you will also need a local installation of either Visual Studio 2022 or
 Visual Studio Code.
 
 > If you do not have Visual Studio, you can download the free version of Visual Studio 2022 Community Edition from
