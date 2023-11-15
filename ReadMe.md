@@ -18,5 +18,5 @@ renamed to **semantic models**.
  - Read the [Microsoft Fabric REST API documentation](https://learn.microsoft.com/rest/api/fabric/articles/) to learn the fundementals
  - Read [Getting Started with the Fabric User
 APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md) to build your understanding of the code in this developer sample
- - Read the <a href="https://learn.microsoft.com/rest/api/fabric/articles">Microsoft Fabric REST API documentation</a> to learn the fundementals
+ - Read the <a href="https://learn.microsoft.com/rest/api/fabric/articles" target="_blank">Microsoft Fabric REST API documentation</a> to learn the fundementals
 
