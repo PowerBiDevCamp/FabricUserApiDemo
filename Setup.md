@@ -162,7 +162,7 @@ telling you the authentication process has completed. At this point, you
 can close the browser window and navigate to the console window for the
 running application.
 
-<img src="./images/Setup/media/image17.png"   style="width:60%" />
+<img src="./images/Setup/media/image17.png"   style="width:70%" />
 
 When the program runs, it should be able to call into the Fabric User
 API to create a new workspace. When the program completes, the console
@@ -171,12 +171,12 @@ screenshot. If you press ENTER on the keyboard, the program will then
 launch a browser and navigate to the new workspace that has just been
 created.
 
-<img src="./images/Setup/media/image18.png"  style="width:75%" />
+<img src="./images/Setup/media/image18.png"  style="width:85%" />
 
 You should be able to navigate to the new workspace and verify that it
 has been created. The workspace should be empty.
 
-<img src="./images/Setup/media/image19.png"  style="width:75%" />
+<img src="./images/Setup/media/image19.png"  style="width:85%" />
 
 While the workspace is empty, you should still be able to verify that it
 has been assigned to a Fabric-enabled capacity.
@@ -184,19 +184,19 @@ has been assigned to a Fabric-enabled capacity.
 Click the button with the 3 ellipses to the right of the **Manage
 access** link to drop down the context menu for the workspace.
 
-<img src="./images/Setup/media/image20.png"  style="width:75%" />
+<img src="./images/Setup/media/image20.png"  style="width:65%" />
 
 Select the **Workspace settings** command to display the **Workspace
 settings** pane.
 
-<img src="./images/Setup/media/image21.png"  style="width:75%" />
+<img src="./images/Setup/media/image21.png"  style="width:65%" />
 
 In the **Workspace settings** pane, verify that the new workspace is
 associated with the capacity you configured in an earlier step.
 
 <img src="./images/Setup/media/image22.png"  style="width:75%" />
 
-This concludes the setup instructions for the FabricUserApiDemo project.
+This concludes the setup instructions for the **FabricUserApiDemo** project.
 You can now experiment by uncommenting code in **Project.cs** to try
 some of the other demonstrations which create semantic models, reports,
 lakehouses and notebooks.
