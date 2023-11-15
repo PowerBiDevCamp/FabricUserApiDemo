@@ -57,7 +57,7 @@ Microsoft introduced .NET Core. This simple redirect URL provides a safe
 and easy way to authenticate .NET applications on your local desktop for
 debugging and testing purposes. Resist the temptation to create the URL
 with the **https** protocol instead of with **http** because it will not
-work. The http protocol is the only one that will work.
+work.
 
 Move down and click the **Register** buttom to create the new application.
 
