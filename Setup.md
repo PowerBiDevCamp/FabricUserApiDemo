@@ -101,11 +101,12 @@ Open the **AppSettings.cs** so you can update configuration values inside.
 <img src="./images/Setup/media/image8.png"   style="width:30%" />
 
 The **AppSettings.cs** file contains several GUID-based Ids for
-ApplicationId, a Fabric capacity Id and the Azure AD object Ids for two
+Application Id, a Fabric capacity Id and the Azure AD object Ids for two
 users, a group and a service principal which are used to test workspace
 role assignment.
 
 <img src="./images/Setup/media/image9.png"  style="width:65%" />
+
 Update the **const** named ApplicationId with the Application Id for the
 Entra application you created in an earlier step.
 
