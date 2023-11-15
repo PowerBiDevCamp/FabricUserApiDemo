@@ -1,12 +1,14 @@
-## Setup
+## Setting Up the FabricUserApiDemo Application
 
 This document is provided to assist you with getting the
 **FabricUserApiDemo** project up and running so you can begin your
-testing with the Fabric User APIs. You will start by creating a new
-Azure AD application which will allow you to authenticate as a user and
-acquire access tokens required to call the Fabric User APIs. After that,
-you will then configure the **FabricUserApiDemo** project with the
-ApplicationId of your new Azure AD application.
+testing with the Fabric User APIs.
+
+- You will start by creating a new Azure AD application to authenticate
+  users and acquire access tokens.
+
+- After that, you will then configure the **FabricUserApiDemo** project
+  with the **ApplicationId** of your application.
 
 In case you have not heard, Microsoft recently renamed ***Azure Active
 Directory*** to ***Microsoft Entra ID***. In the past, you would uses
