@@ -98,7 +98,7 @@ Explorer as shown in the following screenshot. Your next step is to open
 the source file named **AppSettings.cs** so you can update configuration
 values inside.
 
-<img src="./images/Setup/media/image8.png"   style="width:45%" />
+<img src="./images/Setup/media/image8.png"   style="width:35%" />
 
 The AppSettings.cs file contains several GUID-based Ids for
 ApplicationId, a Fabric capacity ID and the Azure AD object Ids for two
