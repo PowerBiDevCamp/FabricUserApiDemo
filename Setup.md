@@ -140,7 +140,7 @@ of the **CustomerTenantBuilder** class to create a new Fabric workspace.
 <img src="./images/Setup/media/image13.png"  style="width:85%" />
 
 Run the **FabricUserApiDemo** application in the Visual Studio debugger
-by pressing {F5} or by clicking the Run button with the green arrow as
+by pressing `{F5}` or by clicking the `Run button with the green arrow as
 shown in the following screenshot.
 
 <img src="./images/Setup/media/image14.png"  style="width:75%" />
