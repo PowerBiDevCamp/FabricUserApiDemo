@@ -14,7 +14,7 @@ complete the following steps.
   access tokens
 - Update the **AppSettings.cs** file with the **ApplicationId** of the
   new application
-- Update the **AppSettings.cs** file with the Id of a capacity with
+- Update the **AppSettings.cs** file with the capacity id of a capacity with
   enabled Fabric functionality.
 
 > In case you have not heard, Microsoft recently renamed ***Azure Active
