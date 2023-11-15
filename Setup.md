@@ -66,3 +66,60 @@ Microsoft Entra admin center.
 
 <img src="./images/Setup/media/image6.png"
 style="width:6.10526in;height:1.96115in" />
+
+## Run the FabricUserApiDemo Application in Visual Studio
+
+Xxxxx
+
+<img src="./images/Setup/media/image7.png"
+style="width:1.78374in;height:2.49761in" />
+
+Xxxxx
+
+<img src="./images/Setup/media/image8.png"
+style="width:4.13573in;height:1.63636in" />
+
+Xx
+
+<img src="./images/Setup/media/image9.png"
+style="width:4.19139in;height:0.69067in" />
+
+Xxx
+
+- <https://app.powerbi.com/admin-portal/capacities/capacitiesList/>
+
+ssss
+
+<img src="./images/Setup/media/image10.png"
+style="width:4.80861in;height:1.86806in" />
+
+ssss
+
+<img src="./images/Setup/media/image11.png"
+style="width:4.82775in;height:1.08118in" />
+
+<img src="./images/Setup/media/image12.png"
+style="width:5.58852in;height:1.91874in" />
+
+<img src="./images/Setup/media/image13.png"
+style="width:5.66986in;height:0.66587in" />
+
+<img src="./images/Setup/media/image14.png"
+style="width:4.0727in;height:1.98092in"
+alt="A screenshot of a computer Description automatically generated" />
+
+<img src="./images/Setup/media/image15.png"
+style="width:2.56133in;height:4.80384in"
+alt="A screenshot of a computer application Description automatically generated" />
+
+<img src="./images/Setup/media/image16.png"
+style="width:3.36364in;height:0.73179in" />
+
+<img src="./images/Setup/media/image17.png"
+style="width:4.76555in;height:0.99881in" />
+
+Xxx
+
+<img src="./images/Setup/media/image18.png"
+style="width:4.47199in;height:1.99542in"
+alt="A screenshot of a computer Description automatically generated" />
