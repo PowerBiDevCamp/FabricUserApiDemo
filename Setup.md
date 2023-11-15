@@ -90,7 +90,7 @@ Once you have a copy of all the project files in a local folder, double
 click on **FabricUserApi.sln** to open the project in Visual Studio
 2022.
 
-<img src="./images/Setup/media/image7.png"   style="width:75%" />
+<img src="./images/Setup/media/image7.png"   style="width:65%" />
 
 Once the **FabricUserApiDemo** project opens in Visual Studio, you
 should be able to see the top-level files and folders in the Solution
@@ -98,7 +98,7 @@ Explorer as shown in the following screenshot. Your next step is to open
 the source file named **AppSettings.cs** so you can update configuration
 values inside.
 
-<img src="./images/Setup/media/image8.png"   style="width:75%" />
+<img src="./images/Setup/media/image8.png"   style="width:45%" />
 
 The AppSettings.cs file contains several GUID-based Ids for
 ApplicationId, a Fabric capacity ID and the Azure AD object Ids for two
