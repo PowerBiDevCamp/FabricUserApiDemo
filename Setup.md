@@ -25,13 +25,13 @@ On the home page of the **Microsoft Entra admin center**, drop down
 the **Applications** section in the left navigation and click the **App
 registrations** link.
 
-<img src="./images/UserGuide/media/image1.png"
+<img src="./images/Setup/media/image1.png"
 style="width:7.5in;height:3.08472in"
 alt="A screenshot of a computer Description automatically generated" />
 
 On the **App registrations** page, click **New registration**.
 
-<img src="./images/UserGuide/media/image2.png"
+<img src="./images/Setup/media/image2.png"
 style="width:7.5in;height:1.54375in"
 alt="A screenshot of a computer Description automatically generated" />
 
@@ -39,7 +39,7 @@ Give the new application a name of **Fabric User API Demo** and leave
 the Supported account types setting with the default selection
 of **Accounts in this organizational directory only**.
 
-<img src="./images/UserGuide/media/image3.png"
+<img src="./images/Setup/media/image3.png"
 style="width:7.26806in;height:3.07639in" />
 
 Move down to the **Redirect URI** section. Select **Public
@@ -47,13 +47,13 @@ client/native** application in the drop down menu and enter a redirect
 URI of [**http://localhost**](http://localhost/). Make sure to create
 the URL with **http** and not **https**.
 
-<img src="./images/UserGuide/media/image4.png"
+<img src="./images/Setup/media/image4.png"
 style="width:7.5in;height:1.43472in"
 alt="A screenshot of a computer Description automatically generated" />
 
 Click **Register** to create the new application.
 
-<img src="./images/UserGuide/media/image5.png"
+<img src="./images/Setup/media/image5.png"
 style="width:5.53125in;height:1.3875in"
 alt="A white rectangular object with blue text Description automatically generated" />
 
@@ -62,5 +62,5 @@ Application ID for use later in the C# console application. Copy
 the **Application ID** from the application summary page in the
 Microsoft Entra admin center.
 
-<img src="./images/UserGuide/media/image6.png"
+<img src="./images/Setup/media/image6.png"
 style="width:6.10526in;height:1.96115in" />
