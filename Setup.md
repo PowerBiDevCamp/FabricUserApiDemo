@@ -47,7 +47,7 @@ of **Accounts in this organizational directory only**.
 <img src="./images/Setup/media/image3.png"  style="width:70%" />
 
 Move down to the **Redirect URI** section. Select **Public
-client/native** application in the drop down menu and enter a redirect
+client/native** application and enter a redirect
 URI of [**http://localhost**](http://localhost/).
 
 <img src="./images/Setup/media/image4.png"  style="width:80%" />
