@@ -8,7 +8,7 @@ application demonstrating how to create Fabric workspaces and Fabric
 workspace items included semantic models, reports, lakehouses and
 notebooks.
 
-<img src="./images/ReadMe/media/image1.png" style="width:70%" />
+<img src="./images/ReadMe/media/image1.png" style="width:50%" />
 
 > Have you heard that **datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
