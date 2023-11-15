@@ -127,14 +127,14 @@ from the address bar as shown in the following screenshot.
 
 Once you have determined the capacity Id of the Fabric-enabled capacity you will
 use for testing, return to the project file named **AppSettings.cs** in
-Visual Studio and update the const named **PremiumCapacityId**. Save
+Visual Studio and update the const named **PremiumCapacityId** and save
 your changes to **AppSettings.cs**.
 
 <img src="./images/Setup/media/image12.png"  style="width:65%" />
 
 Now it is time to run the application. Begin by opening the
-**Program.cs** file and verify matches the screenshot below. Running the
-project for the first time will call the **CreateCustomerTenant** method
+**Program.cs** file and verify its code matches the screenshot below. As you can see, running the
+project will call the **CreateCustomerTenant** method
 of the **CustomerTenantBuilder** class to create a new Fabric workspace.
 
 <img src="./images/Setup/media/image13.png"  style="width:85%" />
