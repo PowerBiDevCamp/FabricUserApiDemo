@@ -32,7 +32,7 @@ URL.
 
 On the home page of the **Microsoft Entra admin center**, drop down
 the **Applications** section in the left navigation and click the **App
-registrations** link.
+registrations** link to navigate to the **App registrations** page.
 
 <img src="./images/Setup/media/image1.png" style="width:85%" />
 
