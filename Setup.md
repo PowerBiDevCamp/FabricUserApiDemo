@@ -155,7 +155,7 @@ requested** dialog which lists the delegated user permissions (aka
 permission scopes) the application has requested. Click the **Accept**
 button at the bottom of the dialog to grant these permissions.
 
-<img src="./images/Setup/media/image16.png"   style="width:75%" />
+<img src="./images/Setup/media/image16.png"   style="width:25%" />
 
 After clicking the **Accept** button, you will see a message in the browser
 telling you the authentication process has completed. At this point, you
