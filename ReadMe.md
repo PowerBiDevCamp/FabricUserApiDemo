@@ -14,9 +14,10 @@ notebooks.
 renamed to **semantic models**.
 
 ## Next steps
- - If you're interested in getting this sample up and running,
+ - To get this developer sample up and running, 
 follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page.
- - If you're interested in learning the fundamentals of the Fabric
-User APIs and how to get started with the programming model, you should read [Getting Started with the Fabric User
-API](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md).
  - Read and become familiar with the [Microsoft Fabric REST API documentation](https://learn.microsoft.com/rest/api/fabric/articles/)
+ - To learn about the fundamentals of the Fabric
+User APIs and to walk through the code for this developer sample, you should read [Getting Started with the Fabric User
+API](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md).
+
