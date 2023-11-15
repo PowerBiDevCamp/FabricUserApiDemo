@@ -52,7 +52,7 @@ URI of **http://localhost**.
 
 <img src="./images/Setup/media/image4.png"  style="width:80%" />
 
-> Support for using a redirect URL of **http://localhost** was added for developers when
+> Support for using a redirect URL of **[http://localhost]** was added for developers when
 Microsoft introduced .NET Core. This simple redirect URL provides a safe
 and easy way to authenticate .NET applications on your local desktop for
 debugging and testing purposes. Resist the temptation to create the URL
