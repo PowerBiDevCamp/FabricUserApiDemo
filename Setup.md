@@ -80,7 +80,7 @@ files to your machine using the following **git clone** command.
 git clone https://github.com/PowerBiDevCamp/FabricUserApiDemo.git
 ```
 
-If you do not use the git utility, you can download all the files in the
+If you do not use the GIT utility, you can download all the files in the
 **FabricUserApiDemo** repository as a ZIP archive using this [**download
 link**](https://github.com/PowerBiDevCamp/FabricUserApiDemo/archive/refs/heads/main.zip).
 Once you have downloaded the ZIP archive, extract its contents into a
