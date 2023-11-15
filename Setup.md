@@ -98,18 +98,18 @@ Explorer as shown in the following screenshot. Your next step is to open
 the source file named **AppSettings.cs** so you can update configuration
 values inside.
 
-<img src="./images/Setup/media/image8.png"   style="width:35%" />
+<img src="./images/Setup/media/image8.png"   style="width:30%" />
 
 The AppSettings.cs file contains several GUID-based Ids for
 ApplicationId, a Fabric capacity ID and the Azure AD object Ids for two
 users, a group and a service principal which are used to test workspace
 role assignment.
 
-<img src="./images/Setup/media/image9.png"  style="width:75%" />
+<img src="./images/Setup/media/image9.png"  style="width:65%" />
 Update the **const** named ApplicationId with the Application Id for the
 Entra application you created in an earlier step.
 
-<img src="./images/Setup/media/image10.png"  style="width:75%" />
+<img src="./images/Setup/media/image10.png"  style="width:65%" />
 
 Next, you need to determine the Id of a Fabric-enabled capacity in
 Fabric environment you are using for your testing. You should be able to
@@ -129,14 +129,14 @@ use for testing, return to the project file named **AppSettings.cs** in
 Visual Studio and update the const named **PremiumCapacityId**. Save
 your changes to **AppSettings.cs**.
 
-<img src="./images/Setup/media/image12.png"  style="width:75%" />
+<img src="./images/Setup/media/image12.png"  style="width:65%" />
 
 Now it is time to run the application. Begin by opening the
 **Program.cs** file and verify matches the screenshot below. Running the
 project for the first time will call the **CreateCustomerTenant** method
 of the **CustomerTenantBuilder** class to create a new Fabric workspace.
 
-<img src="./images/Setup/media/image13.png"  style="width:75%" />
+<img src="./images/Setup/media/image13.png"  style="width:85%" />
 
 Run the **FabricUserApiDemo** application in the Visual Studio debugger
 by pressing {F5} or by clicking the Run button with the green arrow as
