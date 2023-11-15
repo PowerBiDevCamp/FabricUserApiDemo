@@ -61,13 +61,13 @@ work. The http protocol is the only one that will work.
 
 Move down and click the **Register** buttom to create the new application.
 
-<img src="./images/Setup/media/image5.png"  style="width:55%" />
+<img src="./images/Setup/media/image5.png"  style="width:45%" />
 
 Now that you have created the application, you need to record
 Application ID for use later in the C# console application. Copy
 the **Application ID** from the application summary page.
 
-<img src="./images/Setup/media/image6.png"  style="width:75%" />
+<img src="./images/Setup/media/image6.png"  style="width:85%" />
 
 ## Run the FabricUserApiDemo Application in Visual Studio
 
