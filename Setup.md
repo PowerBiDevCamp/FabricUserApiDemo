@@ -4,12 +4,14 @@ This document is provided to assist you with getting the
 **FabricUserApiDemo** project up and running so you can begin your
 testing with the Fabric User APIs. To set up this project for testing,
 you will need a local installation of either Visual Studio 2022 or
-Visual Studio Code. This document will demonstrate setting up and
-running the application using Visual Studio 2022 Community Edition which
-can be downloaded for free from
+Visual Studio Code.
+
+This document will demonstrate setting up and running the application
+using Visual Studio 2022 Community Edition which can be downloaded for
+free from
 [**here**](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030).
 
-To set up the **FabricUserApiDemo** project for testing, you need to
+To set up the **FabricUserApiDemo** project for testing, you must
 complete the following steps.
 
 - Create a new Azure AD application to authenticate users and acquire
