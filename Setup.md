@@ -2,21 +2,32 @@
 
 This document is provided to assist you with getting the
 **FabricUserApiDemo** project up and running so you can begin your
-testing with the Fabric User APIs.
+testing with the Fabric User APIs. To set up this project for testing,
+you will need a local installation of either Visual Studio 2022 or
+Visual Studio Code. This document will demonstrate setting up and
+running the application using Visual Studio 2022 Community Edition which
+can be downloaded for free from
+[**here**](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030).
 
-- You will start by creating a new Azure AD application to authenticate
-  users and acquire access tokens.
+To set up the **FabricUserApiDemo** project for testing, you need to
+complete the following steps.
 
-- After that, you will then configure the **FabricUserApiDemo** project
-  with the **ApplicationId** of your application.
+- Create a new Azure AD application to authenticate users and acquire
+  access tokens
+
+- Update the **AppSettings.cs** file with the **ApplicationId** of the
+  new application
+
+- Update the **AppSettings.cs** file with the Id of a capacity with
+  enabled Fabric functionality.
 
 In case you have not heard, Microsoft recently renamed ***Azure Active
-Directory*** to ***Microsoft Entra ID***. In the past, you would uses
-the Azure AD portal to create an Azure application which can be used to
-call Microsoft APIs such as the Microsoft Graph API and the Fabric User
-API. Now, you will use the **Microsoft Entra admin center** to create a
-new application for the C# console application named
-**FabricUserApiDemo**.
+Directory*** to ***Microsoft Entra ID***. In the past, you would
+typically go to the Azure AD portal to create an new Azure AD
+application which is used to call Microsoft secured APIs such as the
+Microsoft Graph API and the Fabric User API. Now, it’s recommended to
+use the **Microsoft Entra admin center** to create a new application for
+the C# console application named **FabricUserApiDemo**.
 
 Start by navigating to **Microsoft Entra admin center** at the following
 URL.
