@@ -87,14 +87,22 @@ style="width:6.10526in;height:1.96115in" />
 
 ## Run the FabricUserApiDemo Application in Visual Studio
 
-Download all the files in the **FabricUserApiDemo** repository as a ZIP
-archive using this [download
-link](https://github.com/PowerBiDevCamp/FabricUserApiDemo/archive/refs/heads/main.zip).
-Once you have downloaded the ZIP archive expand it’s contents into a
-local folder named **FabricUserApiDemo** as shown in the following
-screenshot. Once you have copied all the files from the ZIP archive into
-the local folder, double click on FabricUserApi.sln to open the project
-in Visual Studio 2022.
+First, you need to copy the source files for the **FabricUserApiDemo**
+project to your local machine so you can open the project in Visual
+Studio. If you have the GIT utility installed, you can clone the project
+files to your machine using the following **git clone** command.
+
+git clone https://github.com/PowerBiDevCamp/FabricUserApiDemo.git
+
+If you do not use the git utility, you can download all the files in the
+**FabricUserApiDemo** repository as a ZIP archive using this [**download
+link**](https://github.com/PowerBiDevCamp/FabricUserApiDemo/archive/refs/heads/main.zip).
+Once you have downloaded the ZIP archive, extract its contents into a
+local folder named **FabricUserApiDemo**.
+
+Once you have a copy of all the project files in a local folder, double
+click on **FabricUserApi.sln** to open the project in Visual Studio
+2022.
 
 <img src="./images/Setup/media/image7.png"
 style="width:4.28708in;height:2.12309in" />
