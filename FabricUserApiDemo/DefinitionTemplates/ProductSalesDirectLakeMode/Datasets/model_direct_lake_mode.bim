@@ -1,0 +1,639 @@
+{
+  "compatibilityLevel": 1604,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      }
+    ],
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "expression": [
+          "let",
+          "    database = Sql.Database(\"{SQL_ENDPOINT_SERVER}\", \"{SQL_ENDPOINT_DATABASE}\")",
+          "in",
+          "    database",
+          ""
+        ],
+        "kind": "m",
+        "lineageTag": "e6ce57a1-3ed6-471d-8e43-42dc52215549"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "1e1b9255-37c0-5b09-e4cf-e097441ae95a",
+        "fromColumn": "CustomerId",
+        "fromTable": "sales",
+        "relyOnReferentialIntegrity": true,
+        "securityFilteringBehavior": "none",
+        "toColumn": "CustomerId",
+        "toTable": "customers"
+      },
+      {
+        "name": "c4c82d44-c750-1138-769a-0ce1d69a5155",
+        "fromColumn": "ProductId",
+        "fromTable": "sales",
+        "relyOnReferentialIntegrity": true,
+        "securityFilteringBehavior": "none",
+        "toColumn": "ProductId",
+        "toTable": "products"
+      },
+      {
+        "name": "7aec17bf-09bc-c189-9fc3-5a52e0d66abb",
+        "fromColumn": "DateKey",
+        "fromTable": "sales",
+        "relyOnReferentialIntegrity": true,
+        "securityFilteringBehavior": "none",
+        "toColumn": "DateKey",
+        "toTable": "calendar"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Products",
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "True"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ProductId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "ProductId",
+            "sourceLineageTag": "ProductId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Product",
+            "sourceLineageTag": "Product",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "sourceLineageTag": "Category",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "products",
+            "mode": "directLake",
+            "source": {
+              "entityName": "products",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[products]"
+      },
+      {
+        "name": "Customers",
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "True"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CustomerId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "CustomerId",
+            "sourceLineageTag": "CustomerId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceLineageTag": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "City",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "City",
+            "sourceLineageTag": "City",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DOB",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "sourceColumn": "DOB",
+            "sourceLineageTag": "DOB",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Customer",
+            "sourceLineageTag": "Customer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "sourceColumn": "Age",
+            "sourceLineageTag": "Age",
+            "summarizeBy": "none"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Customer Geography",
+            "levels": [
+              {
+                "name": "Country",
+                "column": "Country",
+                "ordinal": 0
+              },
+              {
+                "name": "City",
+                "column": "City",
+                "ordinal": 1
+              }
+            ]}
+        ],
+        "partitions": [
+          {
+            "name": "customers",
+            "mode": "directLake",
+            "source": {
+              "entityName": "customers",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[customers]"
+      },
+      {
+        "name": "Sales",
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "True"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "sourceColumn": "DateKey",
+            "sourceLineageTag": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CustomerId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "CustomerId",
+            "sourceLineageTag": "CustomerId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "ProductId",
+            "sourceLineageTag": "ProductId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "sourceColumn": "Sales",
+            "sourceLineageTag": "Sales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "sourceColumn": "Quantity",
+            "sourceLineageTag": "Quantity",
+            "summarizeBy": "sum"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales Revenue",
+            "expression": "Sum(Sales[Sales])",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0"
+          },
+          {
+            "name": "Customer Count",
+            "expression": "DISTINCTCOUNT(Sales[CustomerId])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "First Sale",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
+              }
+            ],
+            "expression": "FIRSTDATE(Sales[Date])",
+            "formatString": "m/d/yyyy"
+          },
+          {
+            "name": "Last Sale",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
+              }
+            ],
+            "expression": "LASTDATE(Sales[Date])",
+            "formatString": "m/d/yyyy"
+          },
+          {
+            "name": "Units Sold",
+            "expression": "SUM(Sales[Quantity])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Customer Rank",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Customers[CustomerId]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Customers), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Product Rank",
+            "expression": [
+              "",
+              "IF( ",
+              "  HASONEVALUE(Products[Product]), ",
+              "  RANKX( ",
+              "    ALLSELECTED(Products), ",
+              "    CALCULATE([Sales Revenue])",
+              "  )",
+              ")"
+            ],
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "sales",
+            "mode": "directLake",
+            "source": {
+              "entityName": "sales",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[sales]"
+      },
+      {
+        "name": "Calendar",
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "True"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "sourceColumn": "Date",
+            "sourceLineageTag": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "sourceLineageTag": "DateKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "sourceColumn": "Year",
+            "sourceLineageTag": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "sourceLineageTag": "Quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "Month",
+            "sourceLineageTag": "Month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "sourceColumn": "Day",
+            "sourceLineageTag": "Day",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthInYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "MonthInYear",
+            "sourceLineageTag": "MonthInYear",
+            "sortByColumn": "MonthInYearSort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthInYearSort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "MonthInYearSort",
+            "sourceLineageTag": "MonthInYearSort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "sourceColumn": "DayOfWeek",
+            "sourceLineageTag": "DayOfWeek",
+            "sortByColumn": "DayOfWeekSort",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayOfWeekSort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "sourceColumn": "DayOfWeekSort",
+            "sourceLineageTag": "DayOfWeekSort",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "calendar-18d918cd-05f3-4529-bf7b-a757b3734120",
+            "mode": "directLake",
+            "source": {
+              "entityName": "calendar",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo",
+              "type": "entity"
+            }
+          }
+        ],
+        "sourceLineageTag": "[dbo].[calendar]"
+      }
+    ]
+  }
+}
