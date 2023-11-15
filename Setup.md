@@ -148,14 +148,14 @@ When you run the application for the first time, the code which manages
 user authentication will launch a browser window prompting you to sign
 in. Sign in with the user account you will use for testing.
 
-<img src="./images/Setup/media/image15.png"  style="width:75%" />
+<img src="./images/Setup/media/image15.png"  style="width:50%" />
 
 After signing in, you will be prompted with a very tall **Permissions
 requested** dialog which lists the delegated user permissions (aka
 permission scopes) the application has requested. Click the **Accept**
 button at the bottom of the dialog to grant these permissions.
 
-<img src="./images/Setup/media/image16.png"   style="width:25%" />
+<img src="./images/Setup/media/image16.png"   style="width:35%" />
 
 After clicking the **Accept** button, you will see a message in the browser
 telling you the authentication process has completed. At this point, you
