@@ -14,7 +14,7 @@ notebooks.
 renamed to **semantic models**.
 
 ## Next steps
- - If you're interested in getting thissample up and running,
+ - If you're interested in getting this sample up and running,
 follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page.
 
  - If you're interested in learning the fundamentals of the Fabric
