@@ -12,11 +12,13 @@ notebooks.
 style="width:2.75168in;height:2.79821in"
 alt="A screenshot of a computer Description automatically generated" />
 
-Have you heard that datasets are no longer called datasets. They’ve been
+> Have you heard that datasets are no longer called datasets. They’ve been
 renamed to semantic models.
 
-If you are interest in getting this developer sample up and running,
-look at xxx.
+## Next steps
+ - If you are interest in getting this developer sample up and running,
+follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page.
 
-If you are interested in reading about the fundamentals of the Fabric
-User APIs, you should read xxx.
+ - If you are interested in learning the fundamentals of the Fabric
+User APIs, you should read [Getting Started with the Fabric User
+API](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md).
