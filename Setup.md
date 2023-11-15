@@ -92,7 +92,7 @@ click on **FabricUserApi.sln** to open the project in Visual Studio
 
 <img src="./images/Setup/media/image7.png"   style="width:65%" />
 
-> Once the **FabricUserApiDemo** project opens in Visual Studio, you
+> Once **FabricUserApiDemo** opens in Visual Studio, you
 should be able to see the top-level files and folders in the Solution
 Explorer.
 
@@ -100,7 +100,7 @@ Open the **AppSettings.cs** so you can update configuration values inside.
 
 <img src="./images/Setup/media/image8.png"   style="width:30%" />
 
-The AppSettings.cs file contains several GUID-based Ids for
+The **AppSettings.cs** file contains several GUID-based Ids for
 ApplicationId, a Fabric capacity Id and the Azure AD object Ids for two
 users, a group and a service principal which are used to test workspace
 role assignment.
