@@ -5,9 +5,7 @@ testing with the Fabric User APIs. To set up this project for testing,
 you will need a local installation of either Visual Studio 2022 or
 Visual Studio Code.
 
-> This document will demonstrate setting up and running the application
-using Visual Studio 2022 Community Edition which can be downloaded for
-free from
+> If you do not have Visual Studio, you can download the feee version of Visual Studio 2022 Community Edition from
 [**here**](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030).
 
 To set up the **FabricUserApiDemo** project for testing, you must
