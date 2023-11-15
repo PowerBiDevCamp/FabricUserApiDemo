@@ -165,7 +165,7 @@ console application running in the Visual Studio debugger.
 
 <img src="./images/Setup/media/image17.png"   style="width:70%" />
 
-When the program runs, it should be able to successfully execute API calls to the Fabric User API including  
+When the program runs, it should be able to successfully execute Fabric User API calls including  
 an API call to create a new workspace. The console
 window should display output as shown in the following
 screenshot. If you press the **ENTER** key on the keyboard, the program will then
