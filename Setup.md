@@ -161,14 +161,14 @@ button at the bottom of the dialog to grant these permissions.
 After clicking the **Accept** button, you will see a message in the browser
 telling you the authentication process has completed. At this point, you
 can close the browser window and navigate back to the console window for the
-console application running in the Visual Studi debugger.
+console application running in the Visual Studio debugger.
 
 <img src="./images/Setup/media/image17.png"   style="width:70%" />
 
-When the program runs, it should be able to call into the Fabric User
-API to create a new workspace. When the program completes, the console
-for the application should display output as shown in the following
-screenshot. If you press **ENTER** on the keyboard, the program will then
+When the program runs, it should be able to successfully execute API calls to the Fabric User API inclide 
+a call to create a new workspace. When the program completes, the console
+window should display output as shown in the following
+screenshot. If you press the **ENTER** key on the keyboard, the program will then
 launch a browser and navigate to the new workspace that has just been
 created.
 
