@@ -162,7 +162,7 @@ telling you the authentication process has completed. At this point, you
 can close the browser window and navigate to the console window for the
 running application.
 
-<img src="./images/Setup/media/image17.png"   style="width:50%" />
+<img src="./images/Setup/media/image17.png"   style="width:60%" />
 
 When the program runs, it should be able to call into the Fabric User
 API to create a new workspace. When the program completes, the console
