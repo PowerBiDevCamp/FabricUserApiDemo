@@ -67,7 +67,7 @@ Now that you have created the application, you need to record
 Application ID for use later in the C# console application. Copy
 the **Application ID** from the application summary page.
 
-<img src="./images/Setup/media/image6.png"  style="width:85%" />
+<img src="./images/Setup/media/image6.png"  style="width:95%" />
 
 ## Run the FabricUserApiDemo Application in Visual Studio
 
