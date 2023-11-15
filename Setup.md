@@ -20,7 +20,7 @@ complete the following steps.
 > In case you have not heard, Microsoft recently renamed ***Azure Active
 Directory*** to ***Microsoft Entra ID***. In the past, you would
 typically go to the Azure AD portal to create an new Azure AD
-application which is used to call Microsoft secured APIs such as the
+application which is required to call Microsoft secured APIs such as the
 Microsoft Graph API and the Fabric User API. Now, it’s recommended to
 use the **Microsoft Entra admin center** to create a new application for
 the C# console application named **FabricUserApiDemo**.
