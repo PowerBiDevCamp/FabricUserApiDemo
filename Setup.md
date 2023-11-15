@@ -38,19 +38,19 @@ registrations** link.
 
 On the **App registrations** page, click **New registration**.
 
-<img src="./images/Setup/media/image2.png"  style="width:75%" />
+<img src="./images/Setup/media/image2.png"  style="width:50%" />
 
 Give the new application a name of **Fabric User API Demo** and leave
 the **Supported account types** setting with the default selection
 of **Accounts in this organizational directory only**.
 
-<img src="./images/Setup/media/image3.png"  style="width:75%" />
+<img src="./images/Setup/media/image3.png"  style="width:60%" />
 
 Move down to the **Redirect URI** section. Select **Public
 client/native** application in the drop down menu and enter a redirect
 URI of [**http://localhost**](http://localhost/).
 
-<img src="./images/Setup/media/image4.png"  style="width:75%" />
+<img src="./images/Setup/media/image4.png"  style="width:60%" />
 
 The redirect URL of <http://localhost> was added for developers when
 Microsoft introduced .NET Core. This simple redirect URL provides a safe
