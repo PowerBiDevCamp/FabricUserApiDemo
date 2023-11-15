@@ -101,7 +101,7 @@ Open the **AppSettings.cs** so you can update configuration values inside.
 <img src="./images/Setup/media/image8.png"   style="width:30%" />
 
 The AppSettings.cs file contains several GUID-based Ids for
-ApplicationId, a Fabric capacity ID and the Azure AD object Ids for two
+ApplicationId, a Fabric capacity Id and the Azure AD object Ids for two
 users, a group and a service principal which are used to test workspace
 role assignment.
 
@@ -111,7 +111,7 @@ Entra application you created in an earlier step.
 
 <img src="./images/Setup/media/image10.png"  style="width:65%" />
 
-Next, you need to determine the Id of a Fabric-enabled capacity in
+Next, you need to determine the capacity Id of a Fabric-enabled capacity in
 Fabric environment you are using for your testing. You should be able to
 see a list of available capacities in the Power BI Admin portal by
 navigating to the following link.
