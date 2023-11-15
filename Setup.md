@@ -178,7 +178,7 @@ has been created. The workspace should be empty.
 
 <img src="./images/Setup/media/image19.png"  style="width:85%" />
 
-While the workspace is empty, you should still be able to verify that it
+> While the workspace is empty, you should still be able to verify that it
 has been assigned to a Fabric-enabled capacity.
 
 Click the button with the 3 ellipses to the right of the **Manage
