@@ -13,13 +13,15 @@ notebooks.
 > Have you heard the news? **Datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
 
-> [!CAUTION]
-> Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this project. 
-> Please check back in early December to get the latest updates to the code in this project.
-
 ## Next steps
  - Follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page to get this developer sample up and running
  - Read the [Microsoft Fabric REST API documentation](https://learn.microsoft.com/rest/api/fabric/articles/) to learn the fundementals
  - Read [Getting Started with the Fabric User
 APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md) to build your understanding of the code in this developer sample
+
+
+> [!CAUTION]
+> Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this project. 
+> Please check back in early December to get the latest updates to the code in this project.
+
  
