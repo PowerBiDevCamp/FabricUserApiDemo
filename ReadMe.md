@@ -13,7 +13,7 @@ notebooks.
 > Have you heard the news? **Datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
 
-> [!IMPORTANT]
+> [!WARNING]
 > Updates are expected at the end of Novemeber that will require changes to this code. 
 > Please check back in early December to get the latest updates to the code in this project.
 
