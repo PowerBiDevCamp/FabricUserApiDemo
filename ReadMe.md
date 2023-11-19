@@ -1,6 +1,3 @@
-> [!CAUTION]
-> Updates are expected at the end of Novemeber.
-
 # Fabric User API Demo
 
 The Fabric User API provides developers with the ability to automate
@@ -15,6 +12,10 @@ notebooks.
 
 > Have you heard the news? **Datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
+
+> [!IMPORTANT]
+> Updates are expected at the end of Novemeber that will require changes to this code. 
+> Please check back in early December to get the latest updates to the code in this project.
 
 ## Next steps
  - Follow the instructions on the [Setup](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Setup.md) page to get this developer sample up and running
