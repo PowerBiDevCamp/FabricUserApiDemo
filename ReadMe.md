@@ -20,6 +20,7 @@ renamed to **semantic models**.
  - Read [Getting Started with the Fabric User
 APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20Started.md) to build your understanding of the code in this developer sample
 
+---
 
 > [!CAUTION]
 > Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this project. 
