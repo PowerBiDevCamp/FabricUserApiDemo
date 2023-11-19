@@ -14,7 +14,7 @@ notebooks.
 renamed to **semantic models**.
 
 > [!CAUTION]
-> Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this code. 
+> Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this project. 
 > Please check back in early December to get the latest updates to the code in this project.
 
 ## Next steps
