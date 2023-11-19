@@ -1,3 +1,7 @@
 FabricUserApiDemo/WebPages/* linguist-documentation
 
 FabricUserApiDemo/DefinitionTemplates/WebPages/* linguist-documentation
+
+FabricUserApiDemo/DefinitionTemplates/WebPages/js/jquery.js linguist-documentation
+
+FabricUserApiDemo/WebPages/js/jquery.js linguist-documentation
