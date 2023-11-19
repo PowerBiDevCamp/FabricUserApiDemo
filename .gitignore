@@ -1,4 +1,4 @@
 ~*
 
 *.docx
-*.ps1
+GenerateMarkdown_GettingStarted.ps1
