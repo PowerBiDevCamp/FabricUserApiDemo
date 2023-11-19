@@ -10,6 +10,7 @@ notebooks.
 
 <img src="./images/ReadMe/media/image1.png" style="width:40%" />
 
+> [!NOTE]
 > Have you heard the news? **Datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
 
