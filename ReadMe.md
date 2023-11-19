@@ -13,7 +13,7 @@ notebooks.
 > Have you heard the news? **Datasets** are no longer called **datasets**. They’ve been
 renamed to **semantic models**.
 
-> [!WARNING]
+> [!NOTE]
 > Updates are expected in the Fabric User API at the end of Novemeber that will require changes to this code. 
 > Please check back in early December to get the latest updates to the code in this project.
 
