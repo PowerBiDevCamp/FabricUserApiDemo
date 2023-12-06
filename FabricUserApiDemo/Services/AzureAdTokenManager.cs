@@ -63,6 +63,31 @@ namespace FabricUserApiDemo.Services {
       return GetAccessToken(FabricPermissionScopes.TenantProvisioning);
     }
 
+    public static AuthenticationResult GetAccessTokenResult(string[] scopes) {
+
+      // create new public client application
+      var appPublic = PublicClientApplicationBuilder.Create(applicationId)
+                      .WithAuthority(tenantCommonAuthority)
+                      .WithRedirectUri(redirectUri)
+                      .Build();
+
+      // connect application to token cache
+      TokenCacheHelper.EnableSerialization(appPublic.UserTokenCache);
+
+      AuthenticationResult authResult;
+      try {
+        // try to acquire token from token cache
+        var user = appPublic.GetAccountsAsync().Result.FirstOrDefault();
+        authResult = appPublic.AcquireTokenSilent(scopes, user).ExecuteAsync().Result;
+      }
+      catch {
+        authResult = appPublic.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
+      }
+
+      // return access token to caller
+      return authResult;
+    }
+
     static class TokenCacheHelper {
 
       private static readonly string CacheFilePath = Assembly.GetExecutingAssembly().Location + ".tokencache.json";

@@ -19,14 +19,14 @@
 
 # CELL ********************
 
-# copy CSV files to lakehouse to load data into bronze zone 
+# copy CSV files to lakehouse to load data into bronze layer 
 import requests
 
 csv_base_url = "https://github.com/PowerBiDevCamp/ProductSalesData/raw/main/"
 
 csv_files = { "Customers.csv", "Products.csv", "Invoices.csv", "InvoiceDetails.csv" }
 
-folder_path = "Files/bronze_landing_zone/"
+folder_path = "Files/bronze_landing_layer/"
 
 for csv_file in csv_files:
     csv_file_path = csv_base_url + csv_file
@@ -37,7 +37,7 @@ for csv_file in csv_files:
 
 # CELL ********************
 
-# create products table for silver zone
+# create products table for silver layer
 from pyspark.sql.types import StructType, StructField, StringType, LongType, FloatType
 
 # create schema for products table using StructType and StructField 
@@ -52,7 +52,7 @@ df_products = (
     spark.read.format("csv")
          .option("header","true")
          .schema(schema_products)
-         .load("Files/bronze_landing_zone/Products.csv")
+         .load("Files/bronze_landing_layer/Products.csv")
 )
 
 # save DataFrame as lakehouse table in Delta format
@@ -69,7 +69,7 @@ df_products.show()
 
 # CELL ********************
 
-# create customers table for silver zone
+# create customers table for silver layer
 from pyspark.sql.types import StructType, StructField, StringType, LongType, DateType
 
 # create schema for customers table using StructType and StructField 
@@ -89,7 +89,7 @@ df_customers = (
          .schema(schema_customers)
          .option("dateFormat", "MM/dd/yyyy")
          .option("inferSchema", "true")
-         .load("Files/bronze_landing_zone/Customers.csv")
+         .load("Files/bronze_landing_layer/Customers.csv")
 )
 
 # save DataFrame as lakehouse table in Delta format
@@ -106,7 +106,7 @@ df_customers.show()
 
 # CELL ********************
 
-# create invoices table for silver zone
+# create invoices table for silver layer
 from pyspark.sql.types import StructType, StructField, LongType, FloatType, DateType
 
 # create schema for invoices table using StructType and StructField 
@@ -124,7 +124,7 @@ df_invoices = (
          .schema(schema_invoices)
          .option("dateFormat", "MM/dd/yyyy")
          .option("inferSchema", "true") 
-         .load("Files/bronze_landing_zone/Invoices.csv")
+         .load("Files/bronze_landing_layer/Invoices.csv")
 )
 
 # save DataFrame as lakehouse table in Delta format
@@ -141,7 +141,7 @@ df_invoices.show()
 
 # CELL ********************
 
-# create invoice_details table for silver zone
+# create invoice_details table for silver layer
 from pyspark.sql.types import StructType, StructField, LongType, FloatType
 
 # create schema for invoice_details table using StructType and StructField 
@@ -158,7 +158,7 @@ df_invoice_details = (
     spark.read.format("csv")
          .option("header","true")
          .schema(schema_invoice_details)
-         .load("Files/bronze_landing_zone/InvoiceDetails.csv")
+         .load("Files/bronze_landing_layer/InvoiceDetails.csv")
 )
 
 # save DataFrame as lakehouse table in Delta format
@@ -175,16 +175,16 @@ df_invoice_details.show()
 
 # CELL ********************
 
-# create products table for gold zone
+# create products table for gold layer
 
-# load DataFrame from silver zone table
+# load DataFrame from silver layer table
 df_gold_products = (
     spark.read
          .format("delta")
          .load("Tables/silver_products")
 )
 
-# write DataFrame to new gold zone table 
+# write DataFrame to new gold layer table 
 ( df_gold_products.write
                   .mode("overwrite")
                   .option("overwriteSchema", "True")
@@ -198,10 +198,10 @@ df_gold_products.show()
 
 # CELL ********************
 
-# create customers table for gold zone
+# create customers table for gold layer
 from pyspark.sql.functions import concat_ws, floor, datediff, current_date, col
 
-# load DataFrame from silver zone table and perform transforms
+# load DataFrame from silver layer table and perform transforms
 df_gold_customers = (
     spark.read
          .format("delta")
@@ -211,7 +211,7 @@ df_gold_customers = (
          .drop('FirstName', 'LastName')
 )
 
-# write DataFrame to new gold zone table 
+# write DataFrame to new gold layer table 
 ( df_gold_customers.write
                    .mode("overwrite")
                    .option("overwriteSchema", "True")
@@ -225,11 +225,11 @@ df_gold_customers.show()
 
 # CELL ********************
 
-# create sales table for gold zone
+# create sales table for gold layer
 from pyspark.sql.functions import col, desc, concat, lit, floor, datediff
 from pyspark.sql.functions import date_format, to_date, current_date, year, month, dayofmonth
 
-# load DataFrames using invoices table and invoice_details table from silver zone
+# load DataFrames using invoices table and invoice_details table from silver layer
 df_silver_invoices = spark.read.format("delta").load("Tables/silver_invoices")
 df_silver_invoice_details = spark.read.format("delta").load("Tables/silver_invoice_details")
 
@@ -246,7 +246,7 @@ df_gold_sales = (
         .select('Date', "DateKey", "CustomerId", "ProductId", "Sales", "Quantity")
 )
 
-# write DataFrame to new gold zone table 
+# write DataFrame to new gold layer table 
 ( df_gold_sales.write
                .mode("overwrite")
                .option("overwriteSchema", "True")
@@ -260,7 +260,7 @@ df_gold_sales.show()
 
 # CELL ********************
 
-# create calendar table for gold zone
+# create calendar table for gold layer
 from datetime import date
 import pandas as pd
 from pyspark.sql.functions import to_date, year, month, dayofmonth, quarter, dayofweek, date_format
@@ -295,7 +295,7 @@ df_calendar_spark = (
        .drop('timestamp')
 )
 
-# write DataFrame to new gold zone table 
+# write DataFrame to new gold layer table 
 ( df_calendar_spark.write
                    .mode("overwrite")
                    .option("overwriteSchema", "True")

@@ -10,6 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Identity.Client" Version="4.56.0" />
     <PackageReference Include="Microsoft.PowerBI.Api" Version="4.17.0" />
+    <PackageReference Include="Azure.Identity" Version="1.10.3" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.17.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -29,7 +29,6 @@ namespace FabricUserApiDemo {
     public const string ConfidentialApplicationId = "";
     public const string ConfidentialApplicationSecret = "";
     public const string TenantSpecificAuthority = "https://login.microsoftonline.com/" + TenantId;
-    
 
   }
 

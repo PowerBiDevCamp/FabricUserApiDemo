@@ -40,7 +40,7 @@ namespace FabricUserApiDemo.Services {
       };
       return itemCreateRequest;
     }
-  
+
     public static FabricItemCreateRequest GetSalesReportCreateRequest(string SemanticModelId, string DisplayName) {
 
       string part1FileContent = Properties.Resources.definition_pbir.Replace("{SEMANTIC_MODEL_ID}", SemanticModelId);
@@ -77,28 +77,96 @@ namespace FabricUserApiDemo.Services {
       return itemCreateRequest;
     }
 
-    public static FabricItemCreateRequest GetNotebookCreateRequest(string WorkspaceId, FabricItem Lakehouse) {
+    public static FabricItemCreateRequest GetNotebookCreateRequest(string WorkspaceId, FabricItem Lakehouse, string DisplayName, string CodeContent) {
 
-      string fileContent = Properties.Resources.notebook_content_direct_lake_mode_py
-                                     .Replace("{WORKSPACE_ID}", WorkspaceId)
-                                     .Replace("{LAKEHOUSE_ID}", Lakehouse.id)
-                                     .Replace("{LAKEHOUSE_NAME}", Lakehouse.displayName);
+      CodeContent = CodeContent.Replace("{WORKSPACE_ID}", WorkspaceId)
+                               .Replace("{LAKEHOUSE_ID}", Lakehouse.id)
+                               .Replace("{LAKEHOUSE_NAME}", Lakehouse.displayName);
 
       FabricItemCreateRequest itemCreateRequest = new FabricItemCreateRequest {
-        displayName = "Create Lakehouse Tables",
+        displayName = DisplayName,
         type = "Notebook",
         definition = new FabricItemDefinition {
+          format = "ipynb",
           parts = new List<FabricItemDefinitionPart>() {
             new FabricItemDefinitionPart {
-              path = "notebook-content.py",
+              path = "notebook-content.ipynb",
               payloadType = "InlineBase64",
-              payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(fileContent))
+              payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(CodeContent))
+            }
+          },
+        }
+      };
+
+      return itemCreateRequest;
+    }
+
+    public static FabricItemCreateRequest GetSparkJobDefinitionCreateRequest(string WorkspaceId, string LakehouseId, string DisplayName) {
+
+      var createPart = new FabricSparkJobDefinitionCreatePart {
+        executableFile = null,
+        defaultLakehouseArtifactId = LakehouseId,
+        mainClass = "",
+        additionalLakehouseIds = null,
+        retryPolicy = null,
+        commandLineArguments = "",
+        additionalLibraryUris = null,
+        language = "",
+        environmentArtifactId = null
+      };
+
+      string createPartJson = JsonSerializer.Serialize(createPart);
+
+      FabricItemCreateRequest itemCreateRequest = new FabricItemCreateRequest {
+        displayName = DisplayName,
+        type = FabricItemType.SparkJobDefinition,
+        definition = new FabricItemDefinition {
+          format = "SparkJobDefinitionV1",
+          parts = new List<FabricItemDefinitionPart>() {
+            new FabricItemDefinitionPart {
+              path = "SparkJobDefinitionV1.json",
+              payloadType = "InlineBase64",
+              payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(createPartJson))
+            }
+          },
+        }
+      };
+
+      return itemCreateRequest;
+    }
+  
+    public static FabricItemUpdateDefinitionRequest GetSparkJobDefinitionUpdateRequest(string WorkspaceId, string LakehouseId, string SparkJobDefinitionId) {
+
+      string executableFile = "abfss://" + WorkspaceId + "@onelake.dfs.fabric.microsoft.com/" + SparkJobDefinitionId + "/Main/Main.py";
+
+      var updatePart = new FabricSparkJobDefinitionCreatePart {
+        executableFile = executableFile,
+        defaultLakehouseArtifactId = LakehouseId,
+        mainClass = "",
+        additionalLakehouseIds = null,
+        retryPolicy = null,
+        commandLineArguments = "",
+        additionalLibraryUris = null,
+        language = "",
+        environmentArtifactId = null
+      };
+
+      string updatePartJson = JsonSerializer.Serialize(updatePart);
+
+      var itemUpdateDefinitionRequest = new FabricItemUpdateDefinitionRequest {
+        definition = new FabricItemDefinition {
+          format = "SparkJobDefinitionV1",
+          parts = new List<FabricItemDefinitionPart>() {
+            new FabricItemDefinitionPart {
+              path = "SparkJobDefinitionV1.json",
+              payloadType = "InlineBase64",
+              payload = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatePartJson))
             }
           }
         }
       };
 
-      return itemCreateRequest;
+      return itemUpdateDefinitionRequest;
     }
 
     public static FabricItemCreateRequest GetDirectLakeSalesModelCreateRequest(string DisplayName, string SqlEndpointServer, string SqlEndpointDatabase) {
@@ -146,7 +214,7 @@ namespace FabricUserApiDemo.Services {
     }
 
     public static void WriteFile(string WorkspaceFolder, string ItemFolder, string FilePath, string FileContent, bool ConvertFromBase64 = true) {
-      
+
       if (ConvertFromBase64) {
         byte[] bytes = Convert.FromBase64String(FileContent);
         FileContent = Encoding.UTF8.GetString(bytes, 0, bytes.Length);
@@ -228,7 +296,7 @@ namespace FabricUserApiDemo.Services {
       return itemCreateRequest;
     }
 
-    
+
 
 
   }

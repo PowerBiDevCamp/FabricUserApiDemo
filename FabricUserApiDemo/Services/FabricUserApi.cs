@@ -82,10 +82,9 @@ namespace FabricUserApiDemo.Services {
             jsonOperation = response.Content.ReadAsStringAsync().Result;
             operation = JsonSerializer.Deserialize<FabricOperation>(jsonOperation);
 
-          } while (response.StatusCode == HttpStatusCode.Accepted ||
-                   response.StatusCode == HttpStatusCode.TooManyRequests ||
-                   operation.status == "InProgress");
-
+          } while (operation.status != "Succeeded" &&
+                   operation.status != "Failed" &&
+                   operation.status != "Completed");
 
           if (response.StatusCode == HttpStatusCode.OK) {
             // handle 2 cases where operation completed successfully
@@ -111,6 +110,7 @@ namespace FabricUserApiDemo.Services {
           }
 
         default: // handle exeception where HTTP status code indicates failure
+          Console.WriteLine();
           throw new ApplicationException("ERROR executing HTTP POST request " + response.StatusCode);
       }
 
@@ -160,14 +160,14 @@ namespace FabricUserApiDemo.Services {
     #endregion
 
     public static List<FabricWorkspace> GetWorkspaces() {
-      string jsonResult = ExecuteGetRequest("/workspaces");
-      return JsonSerializer.Deserialize<List<FabricWorkspace>>(jsonResult);
+      string jsonResponse = ExecuteGetRequest("/workspaces");
+      return JsonSerializer.Deserialize<FabricWorkspaceList>(jsonResponse).value;
     }
 
     public static FabricWorkspace GetWorkspaceByName(string WorkspaceName) {
 
-      string jsonResult = ExecuteGetRequest("/workspaces");
-      List<FabricWorkspace> workspaces = JsonSerializer.Deserialize<List<FabricWorkspace>>(jsonResult);
+      string jsonResponse = ExecuteGetRequest("/workspaces");
+      var workspaces = JsonSerializer.Deserialize<FabricWorkspaceList>(jsonResponse).value;
 
       foreach (FabricWorkspace workspace in workspaces) {
         if (workspace.displayName.Equals(WorkspaceName)) {
@@ -181,7 +181,6 @@ namespace FabricUserApiDemo.Services {
     public static FabricWorkspace CreateWorkspace(string WorkspaceName, string CapacityId = AppSettings.PremiumCapacityId, string Description = null) {
 
       FabricWorkspace workspace = GetWorkspaceByName(WorkspaceName);
-
 
       Console.WriteLine();
       Console.Write(" - Creating " + WorkspaceName + " workspace");
@@ -200,9 +199,9 @@ namespace FabricUserApiDemo.Services {
 
       string requestBody = JsonSerializer.Serialize(workspaceCreateRequest, jsonOptions);
 
-      string jsonResult = ExecutePostRequest("/workspaces", requestBody);
+      string jsonResponse = ExecutePostRequest("/workspaces", requestBody);
 
-      workspace = JsonSerializer.Deserialize<FabricWorkspace>(jsonResult);
+      workspace = JsonSerializer.Deserialize<FabricWorkspace>(jsonResponse);     
 
       Console.WriteLine("   > Workspace created with capacity id " + workspaceCreateRequest.capacityId);
       Console.WriteLine();
@@ -219,9 +218,9 @@ namespace FabricUserApiDemo.Services {
 
       string requestBody = JsonSerializer.Serialize(workspaceUpdateRequest, jsonOptions);
 
-      string jsonResult = ExecutePatchRequest("/workspaces/" + WorkspaceId, requestBody);
+      string jsonResponse = ExecutePatchRequest("/workspaces/" + WorkspaceId, requestBody);
 
-      FabricWorkspace workspace = JsonSerializer.Deserialize<FabricWorkspace>(jsonResult);
+      FabricWorkspace workspace = JsonSerializer.Deserialize<FabricWorkspace>(jsonResponse);
 
       Console.WriteLine("   > Workspace uodated wtith new name of " + workspace.displayName);
       Console.WriteLine();
@@ -238,7 +237,7 @@ namespace FabricUserApiDemo.Services {
       string postBody = "{ \"capacityId\": \"" + CapacityId + "\" }";
 
       // this call returns async 202 ACCEPTED
-      string jsonResult = ExecutePostRequest(restUrl, postBody);
+      string jsonResponse = ExecutePostRequest(restUrl, postBody);
 
     }
 
@@ -308,55 +307,56 @@ namespace FabricUserApiDemo.Services {
       FabricItemTemplateManager.DeleteAllTemplateFiles(WorkspaceName);
 
       FabricWorkspace workspace = GetWorkspaceByName(WorkspaceName);
-      string jsonResult = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
+      string jsonResponse = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
 
-      List<FabricItem> items = JsonSerializer.Deserialize<List<FabricItem>>(jsonResult);
+      var items = JsonSerializer.Deserialize<FabricItemList>(jsonResponse).value;
 
-      //List<string> unsupportedItems = new List<string>() { "dashboard", "datamart", "rdlreport", "Lakehouse" };
+      List<string> unsupportedItems = new List<string>() { FabricItemType.Lakehouse, FabricItemType.SQLEndpoint };
       foreach (var item in items) {
-        // if (!unsupportedItems.Contains(item.type)) {
+        if (!unsupportedItems.Contains(item.type)) {
 
-        if(item.type != FabricItemType.Dashboard &&
-           item.type != FabricItemType.PaginatedReport) {
+          if (item.type != FabricItemType.Dashboard &&
+             item.type != FabricItemType.PaginatedReport) {
 
-          try {
-            string jsonResultItem = ExecutePostRequest("/workspaces/" + workspace.id + "/items/" + item.id + "/getDefinition");
-            FabricItemDefinitionResponse definitionResponse = JsonSerializer.Deserialize<FabricItemDefinitionResponse>(jsonResultItem);
-            FabricItemDefinition definition = definitionResponse.definition;
-            string targetFolder = item.displayName + "." + item.type;
-            Console.WriteLine("Exporting " + targetFolder);
-            foreach (var part in definition.parts) {
-              FabricItemTemplateManager.WriteFile(WorkspaceName, targetFolder, part.path, part.payload);
+            try {
+              string restUrl = "/workspaces/" + workspace.id + "/items/" + item.id + "/getDefinition";
+              if (item.type == FabricItemType.Notebook) {
+                restUrl += "?format=ipynb";
+              }
+              string jsonResponseItem = ExecutePostRequest(restUrl);
+              FabricItemDefinitionResponse definitionResponse = JsonSerializer.Deserialize<FabricItemDefinitionResponse>(jsonResponseItem);
+              FabricItemDefinition definition = definitionResponse.definition;
+              string targetFolder = item.displayName + "." + item.type;
+              Console.WriteLine("Exporting " + targetFolder);
+              foreach (var part in definition.parts) {
+                FabricItemTemplateManager.WriteFile(WorkspaceName, targetFolder, part.path, part.payload);
+              }
+              var ItemMetadata = JsonSerializer.Serialize(new {
+                type = item.type,
+                displayName = item.displayName
+              }, jsonOptions);
+
+              FabricItemTemplateManager.WriteFile(WorkspaceName, targetFolder, "item.metadata.json", ItemMetadata, false);
+
+
             }
-            var ItemMetadata = JsonSerializer.Serialize(new {
-              type = item.type,
-              displayName = item.displayName
-            }, jsonOptions);
+            catch (Exception ex) {
+              Console.WriteLine(" *** Error exporting " + item.type + " named " + item.displayName);
+              Console.WriteLine(" *** " + ex.Message);
 
-            FabricItemTemplateManager.WriteFile(WorkspaceName, targetFolder, "item.metadata.json", ItemMetadata, false);
-
-
+            }
+            // slow up calls so it doesn't trigger throttleing for more than 10+ calls per minute
+            Thread.Sleep(7000);
           }
-          catch (Exception ex) {
-            Console.WriteLine(" *** Error exporting " + item.type + " named " + item.displayName);
-          }
-
-          Thread.Sleep(7000);
 
         }
-
-
-        // slow up calls so it doesn't trigger throttleing for more than 10+ calls per minute
-
-        //}
       }
-
 
     }
 
     public static FabricItem CreateItem(string WorkspaceId, FabricItemCreateRequest ItemCreateRequest) {
 
-      string displayMessage = string.Format(" - Creating {0} {1}", ItemCreateRequest.displayName, ItemCreateRequest.type);
+      string displayMessage = string.Format(" - Creating {0} named {1}", ItemCreateRequest.type, ItemCreateRequest.displayName);
       Console.Write(displayMessage);
 
 
@@ -364,7 +364,7 @@ namespace FabricUserApiDemo.Services {
       string jsonResponse = ExecutePostRequest("/workspaces/" + WorkspaceId + "/items", postBody);
       FabricItem newItem = JsonSerializer.Deserialize<FabricItem>(jsonResponse);
 
-      Console.WriteLine("   > " + newItem.displayName + " " + newItem.type + " created with Id " + newItem.id);
+      Console.WriteLine("   > " + newItem.type + " created with Id " + newItem.id);
       Console.WriteLine();
 
       // return new item object to caller
@@ -381,9 +381,9 @@ namespace FabricUserApiDemo.Services {
 
       string requestBody = JsonSerializer.Serialize(itemUpdateRequest, jsonOptions);
 
-      string jsonResult = ExecutePatchRequest("/workspaces/" + WorkspaceId + "/items/" + ItemId, requestBody);
+      string jsonResponse = ExecutePatchRequest("/workspaces/" + WorkspaceId + "/items/" + ItemId, requestBody);
 
-      FabricItem item = JsonSerializer.Deserialize<FabricItem>(jsonResult);
+      FabricItem item = JsonSerializer.Deserialize<FabricItem>(jsonResponse);
 
       Console.WriteLine("   > Item uodated wtith new name of " + item.displayName);
       Console.WriteLine();
@@ -392,13 +392,25 @@ namespace FabricUserApiDemo.Services {
 
     }
 
+    public static FabricItemDefinitionResponse GetItemDefinitions(string WorkspaceId, string ItemId) {
+      string jsonResponseItem = ExecutePostRequest("/workspaces/" + WorkspaceId + "/items/" + ItemId + "/getDefinition");
+      return JsonSerializer.Deserialize<FabricItemDefinitionResponse>(jsonResponseItem);
+    }
+
+    public static void UpdateItemDefinition(string WorkspaceId, string ItemId, FabricItemUpdateDefinitionRequest ItemUpdateDefinitionRequest) {
+      string postBody = JsonSerializer.Serialize(ItemUpdateDefinitionRequest, jsonOptions);
+      ExecutePostRequest("/workspaces/" + WorkspaceId + "/items/" + ItemId + "/updateDefinition", postBody);
+    }
+
     public static FabricItem CreateLakehouse(string WorkspaceId, string LakehouseName) {
 
+      // Item create request for lakehouse des not include item definition
       FabricItemCreateRequest createRequestLakehouse = new FabricItemCreateRequest {
         displayName = LakehouseName,
         type = "Lakehouse"
       };
 
+      // create lakehouse
       FabricItem lakehouse = CreateItem(WorkspaceId, createRequestLakehouse);
 
       return lakehouse;
@@ -428,20 +440,80 @@ namespace FabricUserApiDemo.Services {
 
     }
 
-    public static void RunNotebook(string WorkspaceId, FabricItem Notebook) {
-      Console.Write(" - Starting job to execute " + Notebook.displayName + " notebook");
+    public static void LoadLakehouseTableFromCsv(string WorkspaceId, string LakehouseId, string SourceFile, string TableName) {
 
-      string restUrl = "/workspaces/" + WorkspaceId + "/items/" + Notebook.id + "/jobs/instances?jobType=RunNotebook";
+      string restUrl = "/workspaces/" + WorkspaceId + "/lakehouses/" + LakehouseId + "/tables/" + TableName + "/load";
+
+      var tableLoadRequest = new FabricTableLoadRequest {
+        loadType = "file",
+        mode = "overwrite",
+        recursive = false,
+        relativePath = SourceFile,
+        formatOptions = new FabricTableLoadRequestFormatOptions {
+          format = "CsvFormatOptions",
+          delimiter = ",",
+          header = true
+        }
+      };
+
+      string postBody = JsonSerializer.Serialize(tableLoadRequest);
+      string jsonResponse = ExecutePostRequest(restUrl, postBody);
+
+
+
+    }
+
+    public static void RunNotebook(string WorkspaceId, FabricItem Item) {
+
+      Console.Write(" - Running notebook named " + Item.displayName + " ");
+
+      string restUrl = "/workspaces/" + WorkspaceId + "/items/" + Item.id + "/jobs/instances?jobType=RunNotebook";
+
       string jsonResponse = ExecutePostRequest(restUrl, "{ \"executionData\": {} }");
 
-      Console.WriteLine("   > Notebook execution job completed");
+      Console.WriteLine("   > Spark job execution completed");
       Console.WriteLine();
     }
 
-    private static void SaveJsonAsFile(string FileName, string JsonText, bool OpenInNotepad = false) {
+    public static FabricItem CreateSparkJobDefinition(SparkJobCreateData CreateData) {
+
+      var createRequest = FabricItemTemplateManager.GetSparkJobDefinitionCreateRequest(CreateData.workspaceId, CreateData.lakehouseId, CreateData.displayName);
+
+      FabricItem sparkJobDefinition = FabricUserApi.CreateItem(CreateData.workspaceId, createRequest);
+
+      var oneLakeFileWriter = new OneLakeFileWriter(CreateData.workspaceId, CreateData.lakehouseId);
+      oneLakeFileWriter.UploadMainFileForSparkJobDefinition(sparkJobDefinition.id, CreateData.codeContent);
+
+      var updateRequest = FabricItemTemplateManager.GetSparkJobDefinitionUpdateRequest(CreateData.workspaceId,
+                                                                                       CreateData.lakehouseId,
+                                                                                       sparkJobDefinition.id);
+
+      Console.WriteLine(" - Upload Python source file Main.py and update Spark Job Definition");
+      FabricUserApi.UpdateItemDefinition(CreateData.workspaceId, sparkJobDefinition.id, updateRequest);
+
+      if (CreateData.runAfterCreate) {
+        RunSparkJobDefinition(CreateData.workspaceId, sparkJobDefinition);
+      }
+
+      return sparkJobDefinition;
+
+    }
+
+    public static void RunSparkJobDefinition(string WorkspaceId, FabricItem Item) {
+      Console.Write(" - Running " + Item.displayName);
+
+      string restUrl = "/workspaces/" + WorkspaceId + "/items/" + Item.id + "/jobs/instances?jobType=sparkjob";
+      string jsonResponse = ExecutePostRequest(restUrl, "{ \"executionData\": {} }");
+
+      Console.WriteLine("   > Spark job execution completed");
+      Console.WriteLine();
+    }
+
+    public static void SaveJsonAsFile(string FileName, string JsonText, bool OpenInNotepad = false) {
 
       string FilePath = AppSettings.ExportToFilePath + FileName;
       Console.WriteLine(" - Generating output file " + FileName);
+      Console.WriteLine();
 
       File.WriteAllText(FilePath, JsonText);
 
@@ -452,11 +524,13 @@ namespace FabricUserApiDemo.Services {
 
     public static void ViewWorkspaces() {
 
-      string jsonResult = ExecuteGetRequest("/workspaces");
-      SaveJsonAsFile("workspaces.json", jsonResult);
+      // call List Workspaces API to retrieve JSON response
+      string jsonResponse = ExecuteGetRequest("/workspaces");
 
-      List<FabricWorkspace> workspaces = JsonSerializer.Deserialize<List<FabricWorkspace>>(jsonResult);
+      // deserialize JSON response and get workspace collection from value property
+      var workspaces = JsonSerializer.Deserialize<FabricWorkspaceList>(jsonResponse).value;
 
+      // enumerate through .NET collection of workspace objects
       foreach (FabricWorkspace workspace in workspaces) {
         Console.WriteLine(workspace.displayName);
       }
@@ -465,9 +539,9 @@ namespace FabricUserApiDemo.Services {
 
     public static void ViewCapacities() {
 
-      string jsonResult = ExecuteGetRequest("/capacities");
+      string jsonResponse = ExecuteGetRequest("/capacities");
 
-      List<FabricCapacity> capacities = JsonSerializer.Deserialize<List<FabricCapacity>>(jsonResult);
+      var capacities = JsonSerializer.Deserialize<FabricCapacityList>(jsonResponse).value;
 
       foreach (var capacity in capacities) {
         Console.WriteLine(capacity.displayName + " : " + capacity.sku);
@@ -476,17 +550,30 @@ namespace FabricUserApiDemo.Services {
     }
 
     public static void ViewWorkspaceRoleAssignments(string WorkspaceId) {
+
       string restUrl = "/workspaces/" + WorkspaceId + "/roleAssignments";
-      string jsonResult = ExecuteGetRequest(restUrl);
-      SaveJsonAsFile("WorkspaceMemebership.json", jsonResult);
+      string jsonResponse = ExecuteGetRequest(restUrl);
+
+      SaveJsonAsFile("WorkspaceMemebership.json", jsonResponse);
+
+      Console.WriteLine(" - Workspace membership list");
+      var roleAssignments = JsonSerializer.Deserialize<FabricWorkspaceRoleAssignmentList>(jsonResponse).value;
+      foreach (var roleAssignment in roleAssignments) {
+        Console.WriteLine("    > " +
+                          roleAssignment.principal.displayName +
+                          " (" + roleAssignment.principal.type + ") " +
+                          "added in role of " + roleAssignment.role);
+      }
+
     }
 
     public static void ViewWorkspaceItems(string WorkspaceName) {
 
       FabricWorkspace workspace = GetWorkspaceByName(WorkspaceName);
-      string jsonResult = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
 
-      List<FabricItem> items = JsonSerializer.Deserialize<List<FabricItem>>(jsonResult);
+      string jsonResponse = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
+
+      var items = JsonSerializer.Deserialize<FabricItemList>(jsonResponse).value;
 
       foreach (var item in items) {
         Console.WriteLine(item.type + " - " + item.id + " - " + item.displayName);
@@ -495,36 +582,56 @@ namespace FabricUserApiDemo.Services {
 
     }
 
+    public static void ViewWorkspaceReports(string WorkspaceId) {
+
+      string jsonResponse = ExecuteGetRequest("/workspaces/" + WorkspaceId + "/items?type=Report");
+
+      var reports = JsonSerializer.Deserialize<FabricItemList>(jsonResponse).value;
+
+      foreach (var item in reports) {
+        Console.WriteLine(item.type + " - " + item.id + " - " + item.displayName);
+      }
+
+
+    }
+
     public static void ViewAllWorkspaceItems() {
 
-      string jsonResult = ExecuteGetRequest("/workspaces");
-      SaveJsonAsFile("workspaces.json", jsonResult);
+      string jsonResponse = ExecuteGetRequest("/workspaces");
+      SaveJsonAsFile("workspaces.json", jsonResponse);
 
-      List<FabricWorkspace> workspaces = JsonSerializer.Deserialize<List<FabricWorkspace>>(jsonResult);
+      var workspaces = JsonSerializer.Deserialize<FabricWorkspaceList>(jsonResponse).value;
 
       foreach (FabricWorkspace workspace in workspaces) {
-        jsonResult = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
-        List<FabricItem> items = JsonSerializer.Deserialize<List<FabricItem>>(jsonResult);
+
+        jsonResponse = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
+        var items = JsonSerializer.Deserialize<FabricItemList>(jsonResponse).value;
+
         foreach (var item in items) {
           Console.WriteLine(item.type + " - " + item.displayName);
         }
+
+
+        // don't call more than 10 times per minute due to throttling
         Thread.Sleep(6000);
       }
+
+
 
     }
 
     public static void ViewWorkspaceItemDefinitions(string WorkspaceName) {
 
       FabricWorkspace workspace = GetWorkspaceByName(WorkspaceName);
-      string jsonResult = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
+      string jsonResponse = ExecuteGetRequest("/workspaces/" + workspace.id + "/items");
 
-      List<FabricItem> items = JsonSerializer.Deserialize<List<FabricItem>>(jsonResult);
+      var items = JsonSerializer.Deserialize<FabricItemList>(jsonResponse).value;
 
       List<string> unsupportedItems = new List<string>() { "dashboard", "datamart" };
       foreach (var item in items) {
         if (!unsupportedItems.Contains(item.type)) {
-          string jsonResultItem = ExecutePostRequest("/workspaces/" + workspace.id + "/items/" + item.id + "/getDefinition");
-          FabricItemDefinitionResponse definitionResponse = JsonSerializer.Deserialize<FabricItemDefinitionResponse>(jsonResultItem);
+          string jsonResponseItem = ExecutePostRequest("/workspaces/" + workspace.id + "/items/" + item.id + "/getDefinition");
+          FabricItemDefinitionResponse definitionResponse = JsonSerializer.Deserialize<FabricItemDefinitionResponse>(jsonResponseItem);
           FabricItemDefinition definition = definitionResponse.definition;
           Console.WriteLine(item.type + ": " + item.displayName);
           foreach (var part in definition.parts) {
@@ -535,7 +642,10 @@ namespace FabricUserApiDemo.Services {
           }
         }
       }
+
+
     }
+
   }
 
 }

@@ -61,6 +61,134 @@ namespace FabricUserApiDemo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to import requests
+        ///from notebookutils import mssparkutils
+        ///
+        ///csv_base_url = &quot;https://github.com/PowerBiDevCamp/ProductSalesData/raw/main/&quot;
+        ///
+        ///csv_files = { &quot;Customers.csv&quot;, &quot;Products.csv&quot;, &quot;Invoices.csv&quot;, &quot;InvoiceDetails.csv&quot; }
+        ///
+        ///folder_path = &quot;Files/bronze_landing_layer/&quot;
+        ///
+        ///for csv_file in csv_files:
+        ///    csv_file_path = csv_base_url + csv_file
+        ///    with requests.get(csv_file_path) as response:
+        ///        csv_content = response.content.decode(&apos;utf-8-sig&apos;)
+        ///        mssparkutils.fs.put(folder_path + csv_file,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CopyFilesToBronzeLayer_py {
+            get {
+                return ResourceManager.GetString("CopyFilesToBronzeLayer_py", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to from datetime import date
+        ///import pandas as pd
+        ///from pyspark.sql.functions import to_date, year, month, dayofmonth, dayofweek, date_format, current_date
+        ///from pyspark.sql.functions import concat_ws, floor, datediff, current_date, col
+        ///
+        ///from pyspark.sql import SparkSession
+        ///spark = SparkSession.builder.appName(&quot;abc&quot;).getOrCreate()
+        ///
+        ///# load DataFrame from silver layer table
+        ///df_gold_products = (
+        ///    spark.read
+        ///         .format(&quot;delta&quot;)
+        ///         .load(&quot;Tables/silver_products&quot;)
+        ///)
+        ///
+        ///# write DataFrame to n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CreateGoldLayerTables_py {
+            get {
+                return ResourceManager.GetString("CreateGoldLayerTables_py", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;nbformat&quot;: 4,
+        ///  &quot;nbformat_minor&quot;: 5,
+        ///  &quot;metadata&quot;: {
+        ///    &quot;language_info&quot;: {
+        ///      &quot;name&quot;: &quot;python&quot;
+        ///    },
+        ///    &quot;a365ComputeOptions&quot;: null,
+        ///    &quot;sessionKeepAliveTimeout&quot;: 0,
+        ///    &quot;trident&quot;: {
+        ///      &quot;lakehouse&quot;: {
+        ///        &quot;default_lakehouse&quot;: &quot;{LAKEHOUSE_ID}&quot;,
+        ///        &quot;default_lakehouse_name&quot;: &quot;{LAKEHOUSE_NAME}&quot;,
+        ///        &quot;default_lakehouse_workspace_id&quot;: &quot;{WORKSPACE_ID}&quot;,
+        ///        &quot;known_lakehouses&quot;: [
+        ///          {
+        ///            &quot;id&quot;: &quot;{LAKEHOUSE_ID}&quot;
+        ///          }
+        ///        ]
+        ///      }
+        ///    }
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CreateLakehouseTables_ipynb {
+            get {
+                return ResourceManager.GetString("CreateLakehouseTables_ipynb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Synapse Analytics notebook source
+        ///
+        ///# METADATA ********************
+        ///
+        ///# META {
+        ///# META   &quot;synapse&quot;: {
+        ///# META     &quot;lakehouse&quot;: {
+        ///# META       &quot;default_lakehouse&quot;: &quot;{LAKEHOUSE_ID}&quot;,
+        ///# META       &quot;default_lakehouse_name&quot;: &quot;{LAKEHOUSE_NAME}&quot;,
+        ///# META       &quot;default_lakehouse_workspace_id&quot;: &quot;{WORKSPACE_ID}&quot;,
+        ///# META       &quot;known_lakehouses&quot;: [
+        ///# META         {
+        ///# META           &quot;id&quot;: &quot;{LAKEHOUSE_ID}&quot;
+        ///# META         }
+        ///# META       ]
+        ///# META     }
+        ///# META   }
+        ///# META }
+        ///
+        ///# CELL ********************
+        ///
+        ///# copy CSV files to la [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CreateLakehouseTables_py {
+            get {
+                return ResourceManager.GetString("CreateLakehouseTables_py", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # create products table for silver layer
+        ///from pyspark.sql.types import StructType, StructField, StringType, LongType, FloatType, DateType
+        ///
+        ///from pyspark.sql import SparkSession
+        ///spark = SparkSession.builder.appName(&quot;abc&quot;).getOrCreate()
+        ///
+        ///# create schema for products table using StructType and StructField 
+        ///schema_products = StructType([
+        ///    StructField(&quot;ProductId&quot;, LongType() ),
+        ///    StructField(&quot;Product&quot;, StringType() ),
+        ///    StructField(&quot;Category&quot;, StringType() )
+        ///])
+        ///
+        ///# Load CSV file into Spark Data [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string CreateSilverLayerTables_py {
+            get {
+                return ResourceManager.GetString("CreateSilverLayerTables_py", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;name&quot;: &quot;CY23SU08&quot;,
         ///  &quot;dataColors&quot;: [
@@ -130,6 +258,7 @@ namespace FabricUserApiDemo.Properties {
         ///    }
         ///  }
         ///}
+        ///
         ///
         ///
         ///.
@@ -258,36 +387,6 @@ namespace FabricUserApiDemo.Properties {
         internal static string model_import_mode_bim {
             get {
                 return ResourceManager.GetString("model_import_mode_bim", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to # Synapse Analytics notebook source
-        ///
-        ///# METADATA ********************
-        ///
-        ///# META {
-        ///# META   &quot;synapse&quot;: {
-        ///# META     &quot;lakehouse&quot;: {
-        ///# META       &quot;default_lakehouse&quot;: &quot;{LAKEHOUSE_ID}&quot;,
-        ///# META       &quot;default_lakehouse_name&quot;: &quot;{LAKEHOUSE_NAME}&quot;,
-        ///# META       &quot;default_lakehouse_workspace_id&quot;: &quot;{WORKSPACE_ID}&quot;,
-        ///# META       &quot;known_lakehouses&quot;: [
-        ///# META         {
-        ///# META           &quot;id&quot;: &quot;{LAKEHOUSE_ID}&quot;
-        ///# META         }
-        ///# META       ]
-        ///# META     }
-        ///# META   }
-        ///# META }
-        ///
-        ///# CELL ********************
-        ///
-        ///# copy CSV files to la [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string notebook_content_direct_lake_mode_py {
-            get {
-                return ResourceManager.GetString("notebook-content_direct_lake_mode_py", resourceCulture);
             }
         }
         

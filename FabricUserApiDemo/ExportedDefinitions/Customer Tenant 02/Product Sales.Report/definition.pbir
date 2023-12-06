@@ -3,10 +3,10 @@
   "datasetReference": {
     "byPath": null,
     "byConnection": {
-      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Acme Corp\";Initial Catalog=\"Product Sales\";Integrated Security=ClaimsToken",
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Customer Tenant 02\";Initial Catalog=\"Product Sales\";Integrated Security=ClaimsToken",
       "pbiServiceModelId": null,
       "pbiModelVirtualServerName": "sobe_wowvirtualserver",
-      "pbiModelDatabaseName": "9b6803ce-9506-409c-ae94-ae6a46b7d9dc",
+      "pbiModelDatabaseName": "9447b811-1c6c-4b38-845c-92b83ad7ca3a",
       "name": "EntityDataSource",
       "connectionType": "pbiServiceXmlaStyleLive"
     }

@@ -1,7 +1,6 @@
 ﻿using FabricUserApiDemo.Services;
 
-string WorkspaceName = "Customer Tenant 01";
-
+string WorkspaceName = "Acme Corp";
 
 // Demo 01
 CustomerTenantBuilder.CreateCustomerTenant(WorkspaceName);
@@ -16,4 +15,7 @@ CustomerTenantBuilder.CreateCustomerTenant(WorkspaceName);
 // CustomerTenantBuilder.CreateCustomerTenantWithDirectLakeSalesModel(WorkspaceName);
 
 // Demo 05
-// FabricUserApi.ExportItemDefinitionsFromWorkspace(WorkspaceName);
+// CustomerTenantBuilder.CreateCustomerTenantWithSparkJobDefinition(WorkspaceName);
+
+// Demo 06
+//FabricUserApi.ExportItemDefinitionsFromWorkspace(WorkspaceName);

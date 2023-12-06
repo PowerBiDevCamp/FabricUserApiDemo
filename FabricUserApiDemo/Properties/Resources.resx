@@ -118,6 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CopyFilesToBronzeLayer_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\SparkJobDefinitions\CopyFilesToBronzeLayer.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateGoldLayerTables_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\SparkJobDefinitions\CreateGoldLayerTables.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateLakehouseTables_ipynb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\Notebooks\CreateLakehouseTables.ipynb;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateLakehouseTables_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\Notebooks\CreateLakehouseTables.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateSilverLayerTables_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\SparkJobDefinitions\CreateSilverLayerTables.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="CY23SU08_json" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\DefinitionTemplates\Shared\Reports\StaticResources\SharedResources\BaseThemes\CY23SU08.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -138,9 +153,6 @@
   </data>
   <data name="model_import_mode_bim" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\DefinitionTemplates\ProductSalesImportMode\Datasets\model_import_mode.bim;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="notebook-content_direct_lake_mode_py" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\DefinitionTemplates\ProductSalesDirectLakeMode\Notebooks\notebook-content_direct_lake_mode.py;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="powerbi_js" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\DefinitionTemplates\WebPages\js\powerbi.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>

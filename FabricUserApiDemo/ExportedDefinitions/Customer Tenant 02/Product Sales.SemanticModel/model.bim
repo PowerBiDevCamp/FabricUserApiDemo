@@ -8,7 +8,7 @@
       },
       {
         "name": "__LastRPTime",
-        "value": "133457394298046797"
+        "value": "133449054132068113"
       }
     ],
     "collation": "Latin1_General_100_BIN2_UTF8",
@@ -32,7 +32,7 @@
         "name": "DatabaseQuery",
         "expression": [
           "let",
-          "    database = Sql.Database(\"5lcsgl3vll3edero2m4sge7gdu-ibrwms65io3uvavdxj7njqsozy.datawarehouse.pbidedicated.windows.net\", \"452086cf-4e84-44d9-b7de-deebbcc660fe\")",
+          "    database = Sql.Database(\"5lcsgl3vll3edero2m4sge7gdu-us7mzkpbrstunfjgyjljwzyw2u.datawarehouse.pbidedicated.windows.net\", \"593f77b7-733d-46eb-aa48-5f347ced4c35\")",
           "in",
           "    database",
           ""
