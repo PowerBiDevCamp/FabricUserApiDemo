@@ -23,7 +23,7 @@ APIs](https://github.com/PowerBiDevCamp/FabricUserApiDemo/blob/main/Getting%20St
 ---
 
 > [!IMPORTANT]
-> This project was updated Dec 6 with updates to deal with breaking changes recently applied to  the Fabric User API.
+> This project was updated Dec 6 with updates to deal with breaking changes applied to  the Fabric User API.
 > Please download the latest version of this source code if you previously downloaded the source code for this project before this date.
 
  
